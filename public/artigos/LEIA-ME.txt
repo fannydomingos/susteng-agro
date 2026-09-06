@@ -1,0 +1,4 @@
+Coloque aqui os PDFs dos artigos e fichas técnicas.
+O item "Ficha técnica agronômica" em src/lib/artigos.ts espera o arquivo:
+  ficha-tecnica-70-30.pdf
+Se não for usar, remova o campo "arquivo" desse item.
