@@ -1,44 +1,45 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------
-   TOKENS DE DESIGN — paleta e tipografia extraídas do material
-   da SustentAgro (apresentação institucional + ficha técnica).
-----------------------------------------------------------------*/
+/* ===============================================================
+   SISTEMA VISUAL AGROTECH
+   Tema escuro, luz verde, vidro e gradiente. A paleta é a que a
+   cliente definiu; a cor de destaque é #B6FF89.
+   =============================================================== */
 @theme {
-  /* Verdes da marca */
-  --color-verde-950: #04211a;
-  --color-verde-900: #06211d;
-  --color-verde-800: #0a3325;
-  --color-verde-700: #0f4a32;
-  --color-verde-600: #12734a;
-  --color-verde-500: #159c5a;
-  --color-verde-400: #2bbd74;
-  --color-verde-300: #5cd897;
+  /* Escala principal */
+  --color-verde-950: #051f20;
+  --color-verde-900: #0b2b26;
+  --color-verde-800: #163832;
+  --color-verde-700: #235347;
+  --color-verde-600: #2c6555;
+  --color-sage: #8eb69b;
 
-  /* Destaques */
-  --color-neon: #3df08a;
-  --color-neon-forte: #20ff86;
-  --color-lima: #a9f06b;
+  /* Destaque */
+  --color-destaque: #b6ff89;
+  --color-destaque-suave: #cbffab;
 
-  /* Fibra de coco (marrons das embalagens) */
-  --color-fibra-700: #6d3d10;
-  --color-fibra-600: #8a4b12;
-  --color-fibra-500: #a2601c;
-  --color-fibra-300: #d09a5c;
+  /* Texto */
+  --color-menta: #daf1de;
+  --color-menta-suave: #eaf6ec;
 
-  /* Neutros */
-  --color-areia: #f6f4ee;
-  --color-off: #f4f8f3;
-  --color-tinta: #10231c;
-  --color-tinta-suave: #48605a;
+  /* Fundo mais fundo que o verde-950, para dar profundidade ao gradiente */
+  --color-abismo: #02100f;
 
-  /* Tipografia auto-hospedada (src/fonts) */
+  /* Fundos claros, para as seções que respiram entre as escuras */
+  --color-nevoa: #f5faf6;
+  --color-nevoa-2: #e7f2e9;
+
   --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
 
-  /* Ritmo */
-  --radius-marca: 1.25rem;
+  --radius-marca: 1rem;
   --ease-marca: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-vidro: 0 1px 0 0 rgba(218, 241, 222, 0.06) inset,
+    0 20px 50px -20px rgba(0, 0, 0, 0.7);
+  --shadow-elevado: 0 30px 70px -30px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(218, 241, 222, 0.06);
 }
 
 /* ---------------------------------------------------------------
@@ -48,9 +49,9 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
-  /* Lenis assume o scroll suave quando ativo */
   html.lenis,
   html.lenis body {
     height: auto;
@@ -63,11 +64,11 @@
   }
 
   body {
-    background-color: var(--color-off);
-    color: var(--color-tinta);
+    background-color: var(--color-abismo);
+    color: var(--color-menta);
     font-family: var(--font-sans);
-    /* trava overflow horizontal em qualquer largura */
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
@@ -76,21 +77,20 @@
   h4,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   ::selection {
-    background: var(--color-neon);
-    color: var(--color-verde-900);
+    background: var(--color-destaque);
+    color: var(--color-verde-950);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-verde-500);
+    outline: 2px solid var(--color-destaque);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
-  /* Nenhum texto abaixo de 10px */
   small,
   .text-legenda {
     font-size: 0.75rem;
@@ -98,32 +98,22 @@
 }
 
 @layer utilities {
+  /* Respiro lateral do conteúdo, em três passos: no celular o texto não pode
+     encostar na borda da tela, e a folga cresce junto com a largura. */
   .container-marca {
     width: 100%;
     margin-inline: auto;
-    padding-inline: 1.25rem;
-    max-width: 1400px;
+    padding-inline: 1.5rem;
+    max-width: 1240px;
+  }
+  @media (min-width: 480px) {
+    .container-marca {
+      padding-inline: 1.75rem;
+    }
   }
   @media (min-width: 768px) {
     .container-marca {
       padding-inline: 2rem;
-    }
-  }
-
-  /* Alinha o início do trilho horizontal com o container, sem limitar a largura dele.
-     Escrito com media query porque a classe é própria (variantes do Tailwind não a alcançam). */
-  .trilho-pad {
-    padding-inline: 1.25rem;
-  }
-  @media (min-width: 768px) {
-    .trilho-pad {
-      padding-inline: 2rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .trilho-pad {
-      padding-left: max(2rem, calc((100vw - 1400px) / 2 + 2rem));
-      padding-right: 6rem;
     }
   }
 
@@ -132,29 +122,261 @@
     min-width: 44px;
   }
 
-  .texto-gradiente {
-    background: linear-gradient(92deg, var(--color-neon-forte), var(--color-lima));
+  /* Rótulo técnico, em monoespaçada */
+  .rotulo {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* ---------------- VIDRO ---------------- */
+  /*
+   * Superfície de vidro. NÃO declare `position` aqui: utilitário do Tailwind e
+   * classe daqui vivem na mesma camada, e o que vier depois no arquivo vence.
+   * Um `position: relative` nesta regra anulava o `absolute` das etiquetas do
+   * topo da página. Quem usa .vidro define a posição pelo Tailwind
+   * (`relative` nos cartões, `absolute` nas etiquetas flutuantes).
+   */
+  .vidro {
+    background:
+      linear-gradient(
+        160deg,
+        rgba(218, 241, 222, 0.075) 0%,
+        rgba(218, 241, 222, 0.022) 45%,
+        rgba(218, 241, 222, 0.04) 100%
+      );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-vidro);
+  }
+
+  /*
+   * Etiqueta técnica que flutua por cima da foto do produto. Como o fundo
+   * dela é uma imagem clara, o vidro translúcido não basta: aqui a base é
+   * escura e quase opaca, senão o rótulo some contra a embalagem.
+   */
+  .etiqueta {
+    background:
+      linear-gradient(160deg, rgba(218, 241, 222, 0.09), rgba(218, 241, 222, 0.03)),
+      rgba(2, 16, 15, 0.93);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-elevado);
+  }
+
+  /* Borda em gradiente, feita com máscara para não pintar o miolo */
+  .borda-luz::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      150deg,
+      rgba(182, 255, 137, 0.45) 0%,
+      rgba(218, 241, 222, 0.12) 34%,
+      rgba(218, 241, 222, 0.04) 62%,
+      rgba(182, 255, 137, 0.22) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Holofote que segue o cursor. As variáveis vêm do componente. */
+  .holofote::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--holofote-op, 0);
+    transition: opacity 0.35s var(--ease-marca);
+    background: radial-gradient(
+      18rem circle at var(--holofote-x, 50%) var(--holofote-y, 50%),
+      rgba(182, 255, 137, 0.14),
+      transparent 62%
+    );
+  }
+
+  /* ---------------- LUZ E FUNDO ---------------- */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    will-change: transform;
+  }
+
+  .grao::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  }
+
+  /* Texto com degradê. Os degradês vêm de variáveis para que a seção clara
+     possa trocá-los sem que o componente saiba em que fundo está. */
+  .texto-luz {
+    background: var(
+      --grad-titulo,
+      linear-gradient(180deg, var(--color-menta) 0%, rgba(218, 241, 222, 0.62) 100%)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  .vidro {
-    background: color-mix(in srgb, white 8%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+  .texto-destaque {
+    background: var(
+      --grad-destaque,
+      linear-gradient(100deg, var(--color-destaque) 0%, var(--color-sage) 100%)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .grade-suave {
-    background-image:
-      linear-gradient(to right, color-mix(in srgb, var(--color-verde-500) 8%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in srgb, var(--color-verde-500) 8%, transparent) 1px, transparent 1px);
-    background-size: 64px 64px;
+  /* ---------------- SEÇÃO SOBRE FUNDO CLARO ----------------
+     O verde de destaque (#B6FF89) tem contraste alto no escuro e quase nenhum
+     no claro, então aqui as palavras destacadas usam o verde profundo da
+     paleta. Trocar as variáveis num ancestral basta: quem pinta o texto
+     apenas as lê. */
+  .claro {
+    --grad-titulo: linear-gradient(180deg, var(--color-verde-950) 0%, rgba(5, 31, 32, 0.7) 100%);
+    --grad-destaque: linear-gradient(100deg, var(--color-verde-700) 0%, var(--color-verde-600) 100%);
+    color: var(--color-verde-950);
+  }
+
+  /* Régua fina, usada em vez de caixas para separar conteúdo */
+  .regua {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(218, 241, 222, 0.16), rgba(218, 241, 222, 0.02));
+  }
+  .claro .regua {
+    background: linear-gradient(90deg, rgba(5, 31, 32, 0.16), rgba(5, 31, 32, 0.03));
+  }
+
+  /* Botão principal, com brilho por baixo */
+  .botao-luz {
+    position: relative;
+    background: linear-gradient(180deg, var(--color-destaque) 0%, #93e768 100%);
+    color: var(--color-verde-950);
+    box-shadow:
+      0 0 0 1px rgba(182, 255, 137, 0.5),
+      0 10px 30px -8px rgba(182, 255, 137, 0.4),
+      0 2px 0 0 rgba(255, 255, 255, 0.35) inset;
+    transition:
+      transform 0.35s var(--ease-marca),
+      box-shadow 0.35s var(--ease-marca),
+      filter 0.35s var(--ease-marca);
+  }
+  .botao-luz:hover {
+    filter: brightness(1.06);
+    box-shadow:
+      0 0 0 1px rgba(182, 255, 137, 0.7),
+      0 16px 44px -10px rgba(182, 255, 137, 0.55),
+      0 2px 0 0 rgba(255, 255, 255, 0.4) inset;
+  }
+
+  .botao-vidro {
+    background: rgba(218, 241, 222, 0.05);
+    border: 1px solid rgba(218, 241, 222, 0.16);
+    color: var(--color-menta);
+    backdrop-filter: blur(10px);
+    transition:
+      border-color 0.35s var(--ease-marca),
+      background-color 0.35s var(--ease-marca);
+  }
+  .botao-vidro:hover {
+    border-color: rgba(182, 255, 137, 0.55);
+    background: rgba(182, 255, 137, 0.08);
+  }
+
+  /* Etiqueta pequena com ponto pulsante */
+  .pastilha {
+    border: 1px solid rgba(182, 255, 137, 0.28);
+    background: rgba(182, 255, 137, 0.07);
+    color: var(--color-destaque);
+  }
+
+  /* Marquee dos parceiros */
+  .marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-fita {
+    animation: correr 42s linear infinite;
+  }
+  @keyframes correr {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes flutuar {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(4%, -6%, 0) scale(1.08);
+    }
+  }
+  .flutua-lento {
+    animation: flutuar 22s ease-in-out infinite;
+  }
+  .flutua-lento-2 {
+    animation: flutuar 30s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulsar {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.82);
+    }
+  }
+  .ponto-vivo {
+    animation: pulsar 2.4s ease-in-out infinite;
+  }
+
+  /* Seta do convite a descer, na hero */
+  @keyframes descer {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 6px, 0);
+    }
+  }
+  .flutua-descer {
+    animation: descer 2.2s ease-in-out infinite;
   }
 }
 
-/* Cursor customizado: só no desktop com mouse fino */
-@media (min-width: 1024px) and (pointer: fine) {
+/* Esconde o cursor do sistema só onde o cursor próprio existe. A condição é a
+   mesma do componente: tela grande, ponteiro de precisão e hover de verdade.
+   Sem o `hover: hover` um tablet com caneta ficaria sem cursor nenhum. */
+@media (min-width: 1024px) and (pointer: fine) and (hover: hover) {
   html.cursor-custom,
   html.cursor-custom * {
     cursor: none !important;
@@ -162,7 +384,7 @@
 }
 
 /* ---------------------------------------------------------------
-   prefers-reduced-motion: desliga tudo que se move
+   prefers-reduced-motion
 ----------------------------------------------------------------*/
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -175,6 +397,13 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .marquee-fita,
+  .flutua-lento,
+  .flutua-lento-2,
+  .flutua-descer,
+  .ponto-vivo {
+    animation: none !important;
   }
   html.cursor-custom,
   html.cursor-custom * {

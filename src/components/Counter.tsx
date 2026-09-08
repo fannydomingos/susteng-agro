@@ -6,7 +6,7 @@ type Props = {
   valor: number;
   sufixo?: string;
   prefixo?: string;
-  /** duração em ms — padrão 2000 */
+  /** duração em ms, padrão 2000 */
   duracao?: number;
   className?: string;
   /** número sem animação (ex.: ano) */
@@ -53,7 +53,7 @@ export default function Counter({
         const inicio = performance.now();
         const passo = (agora: number) => {
           const t = Math.min(1, (agora - inicio) / duracao);
-          // easeOutExpo — chega perto do fim e desacelera
+          // easeOutExpo, chega perto do fim e desacelera
           const e2 = t === 1 ? 1 : 1 - Math.pow(2, -9 * t);
           setAtual(Math.round(valor * e2));
           if (t < 1) requestAnimationFrame(passo);

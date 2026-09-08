@@ -1,0 +1,21 @@
+Evidências geradas pelos scripts da pasta verificacao/, com o site rodando em
+localhost:3210. Estão em JPG só para o pacote não ficar pesado; os scripts
+geram PNG.
+
+  home-*.jpg / quem-somos-*.jpg / produtos-*.jpg / artigos-*.jpg / galeria-*.jpg
+      cada rota nas larguras 320, 390, 768, 1024, 1440 e 1920px
+      (gerados por verificar.mjs, junto com relatorio-medidas.json)
+
+  int-preloader-meio.jpg / int-preloader-fim.jpg
+      a marca sendo revelada na tela de carregamento, no meio e no fim
+
+  int-*.jpg
+      momentos dos testes de interação: hero, donos, seção de produto no
+      computador e no celular, trilho horizontal, pilha do celular, dúvidas
+      na página de produtos, parcerias de pesquisa, esteira, cultivos,
+      formulário, galeria, lightbox, menu mobile e a versão sem movimento
+      (gerados por interacoes.mjs, junto com relatorio-interacoes.json)
+
+  v2-*.jpg
+      passeio completo por cada página, de cima a baixo
+      (gerados por olhada.mjs)

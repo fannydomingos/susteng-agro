@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 
-/** Fontes auto-hospedadas em src/fonts — nenhuma requisição ao Google Fonts em runtime. */
+/** Fontes auto-hospedadas em src/fonts, nenhuma requisição ao Google Fonts em runtime. */
 
 export const poppins = localFont({
   src: [

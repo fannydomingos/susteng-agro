@@ -7,10 +7,10 @@
 
 export const site = {
   nome: "SustentAgro",
-  nomeCompleto: "SustentAgro — Transformando resíduos em recursos",
+  nomeCompleto: "SustentAgro: transformando resíduos em recursos",
   slogan: "Transformando resíduos em recursos",
   descricao:
-    "Substratos ecológicos de fibra e pó de coco produzidos a partir do coco verde descartado. Soluções sustentáveis para viveiros, fruticultura, hortaliças e paisagismo no DF, Entorno e Ceará.",
+    "Substratos ecológicos de fibra e pó de coco, produzidos a partir do coco verde descartado. Soluções sustentáveis para viveiros, fruticultura, hortaliças e paisagismo no Distrito Federal, Entorno e Ceará.",
 
   // Troque para o domínio final antes de publicar (usado em sitemap, robots e Open Graph)
   url: "https://sustentagro.org",
@@ -28,13 +28,13 @@ export const site = {
 
   email: "cristyanomartins@gmail.com",
 
-  // WhatsApp principal — usado no botão flutuante e nos CTAs
+  // WhatsApp principal, usado no botão flutuante e nos CTAs
   whatsapp: {
     // formato internacional, só dígitos
     numero: "5561984068770",
     exibicao: "(61) 98406-8770",
     mensagem:
-      "Olá! Vim pelo site da SustentAgro e gostaria de saber mais sobre os substratos de fibra de coco.",
+      "Olá. Vim pelo site da SustentAgro e gostaria de receber informações sobre os substratos de fibra de coco.",
   },
 
   telefones: [
@@ -61,13 +61,19 @@ export function whatsappUrl(mensagem: string = site.whatsapp.mensagem, numero: s
   return `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 }
 
+/**
+ * Itens do menu, do cabeçalho e do rodapé.
+ *
+ * Hoje são só páginas. Se você acrescentar uma âncora da página inicial
+ * (um item cujo href comece com "/#", como "/#contato"), ela funciona: o
+ * cabeçalho passa a marcar sozinho a seção que está na tela e a rolagem até
+ * ela fica suave. Confira o resultado em 1024px, porque acima de seis itens
+ * os rótulos começam a quebrar em duas linhas.
+ */
 export const navLinks = [
-  { href: "/#quem-somos", label: "Quem somos" },
-  { href: "/#produtos", label: "Produtos" },
-  { href: "/#como-funciona", label: "Como funciona" },
-  { href: "/#aplicacoes", label: "Aplicações" },
-  { href: "/#parceiros", label: "Parceiros" },
-  { href: "/galeria", label: "Fotos" },
+  { href: "/", label: "Início" },
+  { href: "/quem-somos", label: "A empresa" },
+  { href: "/produtos", label: "Produtos" },
   { href: "/artigos", label: "Artigos" },
-  { href: "/#contato", label: "Contato" },
+  { href: "/galeria", label: "Galeria" },
 ] as const;

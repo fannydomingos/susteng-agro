@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import GaleriaGrid from "@/components/GaleriaGrid";
-import RevealText from "@/components/RevealText";
+import { Rotulo, Titulo } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Fotos",
+  title: "Galeria",
   description:
-    "Banco de fotos da SustentAgro: produtos, embalagens, produção, cultivos, equipe e eventos.",
+    "Banco de imagens da SustentAgro: produtos, embalagens, produção, cultivos, equipe e eventos.",
   alternates: { canonical: "/galeria" },
   openGraph: {
-    title: `Fotos · ${site.nome}`,
+    title: `Galeria · ${site.nome}`,
     description:
-      "Banco de fotos da SustentAgro: produtos, embalagens, produção, cultivos, equipe e eventos.",
+      "Banco de imagens da SustentAgro: produtos, embalagens, produção, cultivos, equipe e eventos.",
     url: `${site.url}/galeria`,
   },
 };
@@ -19,28 +20,39 @@ export const metadata: Metadata = {
 export default function GaleriaPage() {
   return (
     <>
-      <section className="bg-verde-950 pb-14 pt-28 sm:pb-20 sm:pt-36">
+      <section className="pb-12 pt-32 sm:pb-16 sm:pt-40">
         <div className="container-marca">
-          <p className="text-legenda font-600 uppercase tracking-wider text-neon">Banco de fotos</p>
-          <RevealText
+          <Link
+            href="/"
+            className="alvo-toque inline-flex items-center gap-2 py-2 text-sm text-menta/50 transition-colors hover:text-destaque"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Voltar para a página inicial
+          </Link>
+          <div className="mt-8">
+            <Rotulo>Banco de imagens</Rotulo>
+          </div>
+          <Titulo
             as="h1"
-            texto="Nossas fotos"
-            destaque={["fotos"]}
-            className="mt-4 font-display text-4xl font-700 leading-[1.08] text-white sm:text-5xl lg:text-6xl"
+            texto="Galeria da SustentAgro"
+            destaque={["Galeria"]}
+            className="mt-6 max-w-4xl font-display text-[2.2rem] font-600 leading-[1.02] sm:text-6xl"
           />
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
-            Produtos, embalagens, produção, cultivos, equipe e eventos. Use as fotos para
-            apresentações, propostas e material de divulgação da SustentAgro.
+          <p className="mt-7 max-w-2xl text-base leading-relaxed text-menta/60 sm:text-lg">
+            Produtos, embalagens, produção, cultivos, equipe e eventos. As imagens estão disponíveis
+            para uso em apresentações, propostas comerciais e material de divulgação.
           </p>
         </div>
       </section>
 
-      <section className="bg-off py-14 sm:py-20">
+      <section className="pb-24 sm:pb-32">
         <div className="container-marca">
           <GaleriaGrid />
-          <p className="mt-10 text-legenda text-tinta-suave">
-            Todas as imagens desta página são {site.legendaImagem}. Para adicionar novas fotos, veja
-            a seção &quot;Galeria&quot; no README do projeto.
+          <p className="mt-10 text-legenda text-menta/35">
+            Todas as imagens desta página são {site.legendaImagem}. Para incluir novas fotos,
+            consulte a seção &quot;Galeria&quot; no README do projeto.
           </p>
         </div>
       </section>

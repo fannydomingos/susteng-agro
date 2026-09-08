@@ -42,7 +42,8 @@ export default function JsonLd() {
       },
       ...produtos.map((p) => ({
         "@type": "Product",
-        "@id": `${site.url}/#produto-${p.slug}`,
+        "@id": `${site.url}/produtos#${p.slug}`,
+        url: `${site.url}/produtos#${p.slug}`,
         name: p.nome,
         description: p.descricao,
         image: `${site.url}${p.imagem}`,

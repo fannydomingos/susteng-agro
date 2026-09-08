@@ -28,11 +28,25 @@ export default function SmoothScroll() {
 
     lenis.on("scroll", ScrollTrigger.update);
 
+    // deixa a instância acessível para depuração e para os testes automatizados
+    // conseguirem posicionar o scroll sem brigar com a animação do Lenis
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
-    // âncoras internas passam a usar o Lenis
+    /**
+     * Âncoras internas passam a usar o Lenis.
+     *
+     * A posição é calculada aqui, em pixels, e não entregando o elemento ao
+     * Lenis: passando o elemento, o cálculo dele depende de `offsetTop` e da
+     * cadeia de `offsetParent`, e com as seções posicionadas a âncora parava
+     * quase 300px abaixo do topo da seção. Medindo pelo retângulo do elemento
+     * o resultado é sempre o mesmo, seja qual for a estrutura da página.
+     */
+    const FOLGA_TOPO = 96; // altura do cabeçalho fixo mais um respiro
+
     const onClick = (e: MouseEvent) => {
       const alvo = (e.target as HTMLElement)?.closest?.("a[href*='#']") as HTMLAnchorElement | null;
       if (!alvo) return;
@@ -44,7 +58,8 @@ export default function SmoothScroll() {
       const destino = document.querySelector(hash);
       if (!destino) return;
       e.preventDefault();
-      lenis.scrollTo(destino as HTMLElement, { offset: -84 });
+      const y = destino.getBoundingClientRect().top + window.scrollY - FOLGA_TOPO;
+      lenis.scrollTo(Math.max(0, y));
       history.replaceState(null, "", hash);
     };
     document.addEventListener("click", onClick);
@@ -54,6 +69,7 @@ export default function SmoothScroll() {
     return () => {
       document.removeEventListener("click", onClick);
       gsap.ticker.remove(tick);
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
       lenis.destroy();
     };
   }, []);

@@ -20,7 +20,7 @@ export type Artigo = {
 
 export const artigos: Artigo[] = [
   {
-    titulo: "Ficha técnica agronômica — Fibra de coco 70/30 SustentAgro",
+    titulo: "Ficha técnica agronômica da fibra de coco 70/30 SustentAgro",
     resumo:
       "Caracterização física e química do substrato: densidade, porosidade, espaço de aeração, retenção de água, pH, condutividade elétrica, matéria orgânica e relação C/N, além das recomendações de manejo.",
     autores: "Equipe técnica SustentAgro",
@@ -33,7 +33,7 @@ export const artigos: Artigo[] = [
   {
     titulo: "Rastreabilidade digital do resíduo de coco verde",
     resumo:
-      "Registro digital de todas as etapas do lote — coleta, transporte, recebimento, triagem, processamento e expedição — com data, hora, peso e responsável técnico, encerrando em QR Code por lote.",
+      "Registro digital de todas as etapas do lote (coleta, transporte, recebimento, triagem, processamento e expedição), com data, hora, peso e responsável técnico, encerrando em QR Code por lote.",
     autores: "SustentAgro",
     ano: "2025",
     tipo: "Estudo de caso",

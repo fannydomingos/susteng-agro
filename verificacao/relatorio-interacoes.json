@@ -1,0 +1,272 @@
+[
+  {
+    "teste": "a tela de carregamento revela a marca de baixo para cima",
+    "resultado": "PASSOU",
+    "detalhe": "recorte de 100% a 0%, sempre descendo: true · série 100, 100, 100, 100, 100, 99.9, 99.9, 99.9, 93, 79, 44.6, 44.6, 17.6, 5.6, 1.2, 1.2, 0, 0"
+  },
+  {
+    "teste": "a marca da tela de carregamento tem as duas camadas, centralizada",
+    "resultado": "PASSOU",
+    "detalhe": "{\"largura\":300,\"camadas\":2,\"apagada\":\"0.16\",\"revelada\":\"1\",\"centralizada\":true}"
+  },
+  {
+    "teste": "a tela de carregamento sai sozinha e devolve a rolagem da página",
+    "resultado": "PASSOU",
+    "detalhe": "{\"aindaNoDom\":false,\"rolagem\":\"auto\"}"
+  },
+  {
+    "teste": "hero ocupa a tela com a foto, a logo por cima e a legenda obrigatória",
+    "resultado": "PASSOU",
+    "detalhe": "{\"alturaTela\":true,\"fotoCobreTela\":true,\"logoVisivel\":true,\"opH1\":1,\"subtexto\":\"Transformando resíduos em recursos\",\"legenda\":true}"
+  },
+  {
+    "teste": "ao descer, a marca desaparece e a foto se desloca em ritmo diferente",
+    "resultado": "PASSOU",
+    "detalhe": "opacidade da marca 1.00 para 0.03 · transform da foto mudou true"
+  },
+  {
+    "teste": "o convite a descer leva para a seção de produtos",
+    "resultado": "PASSOU",
+    "detalhe": "seção em top=96px"
+  },
+  {
+    "teste": "a hero dissolve no verde escuro sem deixar degrau na emenda com a seção seguinte",
+    "resultado": "PASSOU",
+    "detalhe": "{\"fim\":true,\"corDoFundo\":\"rgb(2, 16, 15)\",\"camadasNoFundo\":2,\"posicaoDaJuncao\":450}"
+  },
+  {
+    "teste": "nenhum erro de JavaScript na landing page",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "a página alterna faixas claras e escuras na ordem prevista",
+    "resultado": "PASSOU",
+    "detalhe": "produtos:escuro · como-funciona:escuro · utilizacao:escuro · parceiros:claro · noticias:claro · contato:escuro"
+  },
+  {
+    "teste": "na faixa clara o fundo é próprio e o destaque troca para o verde profundo",
+    "resultado": "PASSOU",
+    "detalhe": "{\"fundo\":\"linear-gradient(rgb(245, 250, 246) 0%, rgb(255, 255, 255) 50%, rgb(245\",\"corTitulo\":\"rgb(5, 31, 32)\",\"corRotulo\":\"rgb(44, 101, 85)\",\"gradDestaque\":\"linear-gradient(100deg, #235347 0%, #2c6\",\"camadasDeFundo\":1}"
+  },
+  {
+    "teste": "o corte entre a faixa clara e a escura é reto, sem degradê de passagem",
+    "resultado": "PASSOU",
+    "detalhe": "{\"camadasDePassagem\":1,\"secaoAcima\":\"parceiros\",\"secaoAbaixo\":\"noticias\"}"
+  },
+  {
+    "teste": "a grade técnica não existe mais no fundo",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "o menu tem cinco itens, todos páginas, sem as âncoras que foram retiradas",
+    "resultado": "PASSOU",
+    "detalhe": "Início→/ · A empresa→/quem-somos · Produtos→/produtos · Artigos→/artigos · Galeria→/galeria"
+  },
+  {
+    "teste": "cada item do menu abre a página certa, com H1, e fica marcado ao chegar",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "abrir o site num endereço com âncora cai na seção, sem o cabeçalho cobrir o começo dela",
+    "resultado": "PASSOU",
+    "detalhe": "{\"rolou\":true,\"topo\":96,\"folgaDoCabecalho\":96}"
+  },
+  {
+    "teste": "o botão em destaque é \"Ver todos os produtos\" e o apagado é \"Solicitar orçamento\"",
+    "resultado": "PASSOU",
+    "detalhe": "{\"principalTexto\":\"Ver todos os produtos\",\"principalHref\":\"/produtos\",\"secundarioTexto\":\"Solicitar orçamento\",\"secundarioHref\":\"https://wa.me/5561984068770?text=Ol%C3%A1.%20Vim%20pelo%20site%20da%20SustentAgro%20e%20gostaria%20de%20receber%20informa%C3%A7%C3%B5es%20sobre%20os%20substratos%20de%20fibra%20de%20coco.\",\"semCartoes\":true,\"temEmbalagem\":true}"
+  },
+  {
+    "teste": "a seção mostra somente a embalagem de fibra, sem a grade de quatro cartões",
+    "resultado": "PASSOU",
+    "detalhe": "cartões removidos true · embalagem presente true"
+  },
+  {
+    "teste": "clicar em \"Ver todos os produtos\" abre a página da linha",
+    "resultado": "PASSOU",
+    "detalhe": "http://localhost:3210/produtos"
+  },
+  {
+    "teste": "no celular a embalagem aparece antes do título e dos botões na seção de produtos",
+    "resultado": "PASSOU",
+    "detalhe": "imagem em 916 · título em 1296 · botão em 1661"
+  },
+  {
+    "teste": "no computador o texto continua à esquerda e a embalagem à direita",
+    "resultado": "PASSOU",
+    "detalhe": "{\"esquerdaDoTitulo\":132,\"esquerdaDaImagem\":772}"
+  },
+  {
+    "teste": "no celular o conteúdo tem folga lateral de pelo menos 24px",
+    "resultado": "PASSOU",
+    "detalhe": "padding 24px · título começa em 24px"
+  },
+  {
+    "teste": "no celular o cursor próprio nem chega a existir",
+    "resultado": "PASSOU",
+    "detalhe": "{\"ponto\":false,\"anel\":false,\"classe\":false}"
+  },
+  {
+    "teste": "a página de produtos ficou só com os quatro formatos, sem a abertura e sem a ficha técnica",
+    "resultado": "PASSOU",
+    "detalhe": "{\"ids\":[\"fibra-de-coco\",\"blend-de-coco\",\"po-de-coco\",\"substrato-personalizado\"],\"umH1\":1,\"temAbertura\":false,\"temFichaTecnica\":false,\"temIndice\":false}"
+  },
+  {
+    "teste": "cada formato ocupa a tela inteira e o palco tem a altura da janela",
+    "resultado": "PASSOU",
+    "detalhe": "painel 1440px de largura · palco 900 / janela 900"
+  },
+  {
+    "teste": "o trilho fica grudado no topo e os formatos passam para o lado conforme a rolagem",
+    "resultado": "PASSOU",
+    "detalhe": "topos 0, 0, 0, 0 · x -252 → -1508 → -3063 → -4320"
+  },
+  {
+    "teste": "no fim do trilho o quarto formato fica inteiro na tela, sem passar por baixo do cabeçalho",
+    "resultado": "PASSOU",
+    "detalhe": "{\"painelNaTela\":true,\"tituloAbaixoDoCabecalho\":true,\"tituloVisivel\":true}"
+  },
+  {
+    "teste": "cada formato tem um pedido de orçamento com o próprio nome na mensagem",
+    "resultado": "PASSOU",
+    "detalhe": "4 links · todos com nome true"
+  },
+  {
+    "teste": "os quatro formatos apontam para quatro arquivos de imagem diferentes",
+    "resultado": "PASSOU",
+    "detalhe": "produto-fibra.png · produto-mix.png · produto-po.png · produto-personalizado.png"
+  },
+  {
+    "teste": "nenhum erro de JavaScript na página de produtos",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "no celular os formatos viram uma pilha vertical, sem sequestrar o gesto de rolagem",
+    "resultado": "PASSOU",
+    "detalhe": "{\"trilhoEscondido\":true,\"quantidade\":4,\"empilhadosEmOrdem\":true,\"todosComTitulo\":true}"
+  },
+  {
+    "teste": "contadores partem de zero e chegam ao valor final (~2s)",
+    "resultado": "PASSOU",
+    "detalhe": "antes [\"0+\",\"0+\",\"0 t\",\"2022\"] · depois [{\"t\":\"250+\",\"f\":\"250\"},{\"t\":\"150+\",\"f\":\"150\"},{\"t\":\"350 t\",\"f\":\"350\"},{\"t\":\"2022\",\"f\":\"2022\"}]"
+  },
+  {
+    "teste": "a página A empresa mostra os dois donos, com nome, cargo e WhatsApp de cada um",
+    "resultado": "PASSOU",
+    "detalhe": "{\"quantidade\":2,\"temFotoDeFamilia\":false,\"pessoas\":[{\"arquivo\":\"equipe-cristyano.jpg\",\"alt\":\"Cristyano Martins, diretor executivo da SustentAgro\",\"nome\":\"Cristyano Martins\",\"cargo\":\"Diretor executivo\",\"whatsapp\":\"https://wa.me/5561984068770?text=Olá, Cristyano. Vim pelo site da SustentAgro e gostaria de falar sobre os substratos.\",\"visivel\":true},{\"arquivo\":\"equipe-fabiano.jpg\",\"alt\":\"Fabiano Martins, diretor operacional da SustentAgro\",\"nome\":\"Fabiano Martins\",\"cargo\":\"Diretor operacional\",\"whatsapp\":\"https://wa.me/5561999654060?text=Olá, Fabiano. Vim pelo site da SustentAgro e gostaria de falar sobre os substratos.\",\"visivel\":true}]}"
+  },
+  {
+    "teste": "cada diretor tem o próprio número de WhatsApp no cartão",
+    "resultado": "PASSOU",
+    "detalhe": "5561984068770 · 5561999654060"
+  },
+  {
+    "teste": "o cursor troca de cor entre as faixas e fica visível nas duas, com contraste acima de 4,5:1",
+    "resultado": "PASSOU",
+    "detalhe": "escuro rgb(182, 255, 137) (16.3:1 no fundo escuro) · claro rgb(35, 83, 71) (8.8:1 no branco)"
+  },
+  {
+    "teste": "a esteira tem seis etapas e o pulso de luz percorre a linha sozinho",
+    "resultado": "PASSOU",
+    "detalhe": "etapas 6 · destacadas ao longo do tempo 0,1,2,3,4,-1"
+  },
+  {
+    "teste": "a linha de cultivo abre de verdade ao clicar, sem cartão em volta",
+    "resultado": "PASSOU",
+    "detalhe": "linhas 6 · false→true · altura 89→126 · sem vidro true"
+  },
+  {
+    "teste": "as dúvidas frequentes saíram da página inicial",
+    "resultado": "PASSOU",
+    "detalhe": "{\"botoesDeFaq\":0,\"secaoDeDuvidas\":false}"
+  },
+  {
+    "teste": "o formulário abre o WhatsApp com nome, cidade e cultivo preenchidos",
+    "resultado": "PASSOU",
+    "detalhe": "https://wa.me/5561984068770?text=Ol%C3%A1.%20Vim%20pelo%20site%20da%20SustentAgro.%0A%0ANome%3A%20Maria%20Teste%0ACidade%2FUF%3A%20Formosa%2"
+  },
+  {
+    "teste": "o botão flutuante de WhatsApp aponta para o número principal",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "as dúvidas frequentes estão na página de produtos e o acordeão abre e fecha",
+    "resultado": "PASSOU",
+    "detalhe": "6 perguntas · primeira true→false"
+  },
+  {
+    "teste": "as notícias são uma lista editorial, sem cartões, e abrem em nova aba",
+    "resultado": "PASSOU",
+    "detalhe": "{\"quantidade\":3,\"todosExternos\":true,\"semCartao\":true}"
+  },
+  {
+    "teste": "quem somos, artigos e galeria saíram da página inicial e continuam no menu",
+    "resultado": "PASSOU",
+    "detalhe": "{\"blocoDeArtigos\":false,\"blocoDeGaleria\":false,\"secaoRecursos\":false,\"secaoQuemSomos\":false,\"artigosNoMenu\":true,\"galeriaNoMenu\":true,\"empresaNoMenu\":true}"
+  },
+  {
+    "teste": "as parcerias de pesquisa saíram da lista de artigos e ganharam faixa clara própria",
+    "resultado": "PASSOU",
+    "detalhe": "{\"existe\":true,\"tema\":\"claro\",\"dentroDaListaDeArtigos\":false,\"depoisDaLista\":true,\"corTitulo\":\"rgb(5, 31, 32)\",\"temBotao\":true}"
+  },
+  {
+    "teste": "todas as fotos da galeria carregam, com texto alternativo",
+    "resultado": "PASSOU",
+    "detalhe": "16 fotos · quebradas [] · sem alt 0 · respostas com erro 0"
+  },
+  {
+    "teste": "o filtro da galeria reduz mesmo as fotos exibidas",
+    "resultado": "PASSOU",
+    "detalhe": "16 → 3"
+  },
+  {
+    "teste": "clicar numa foto abre o lightbox",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "o lightbox fecha no botão de fechar e devolve a rolagem da página",
+    "resultado": "PASSOU",
+    "detalhe": "lightbox no DOM false · overflow-y do body auto"
+  },
+  {
+    "teste": "com cinco itens o menu completo já cabe em 1024px, sem rótulo quebrado, e abaixo disso fica o botão",
+    "resultado": "PASSOU",
+    "detalhe": "768px menu=false botão=true quebras=0 · 1024px menu=true botão=false quebras=0 · 1440px menu=true botão=false quebras=0"
+  },
+  {
+    "teste": "o menu mobile abre ao tocar no botão",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  },
+  {
+    "teste": "com o menu aberto a página atrás não rola",
+    "resultado": "PASSOU",
+    "detalhe": "hidden"
+  },
+  {
+    "teste": "o menu mobile lista os mesmos cinco itens do computador",
+    "resultado": "PASSOU",
+    "detalhe": "Início · A empresa · Produtos · Artigos · Galeria"
+  },
+  {
+    "teste": "o link do menu mobile fecha o menu e navega para a página",
+    "resultado": "PASSOU",
+    "detalhe": "menu fechado true · http://localhost:3210/produtos"
+  },
+  {
+    "teste": "com movimento reduzido: sem preloader, sem scroll suave, sem cursor próprio, animações paradas e todo o texto visível",
+    "resultado": "PASSOU",
+    "detalhe": "{\"preloader\":false,\"lenis\":false,\"cursor\":false,\"h1\":\"1\",\"marquee\":\"none\",\"setaHero\":\"none\",\"titulosEscondidos\":0}"
+  },
+  {
+    "teste": "nenhum erro de JavaScript com movimento reduzido",
+    "resultado": "PASSOU",
+    "detalhe": ""
+  }
+]

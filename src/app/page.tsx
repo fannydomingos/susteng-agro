@@ -1,38 +1,43 @@
-import Hero from "@/components/sections/Hero";
-import Numeros from "@/components/sections/Numeros";
-import QuemSomos from "@/components/sections/QuemSomos";
-import Diagnostico from "@/components/sections/Diagnostico";
-import ProdutosHorizontal from "@/components/sections/ProdutosHorizontal";
-import ComoFunciona from "@/components/sections/ComoFunciona";
-import Aplicacoes from "@/components/sections/Aplicacoes";
-import Rastreabilidade from "@/components/sections/Rastreabilidade";
-import FichaTecnica from "@/components/sections/FichaTecnica";
-import Impacto from "@/components/sections/Impacto";
-import Parceiros from "@/components/sections/Parceiros";
-import Equipe from "@/components/sections/Equipe";
-import Noticias from "@/components/sections/Noticias";
-import Faq from "@/components/sections/Faq";
-import Contato from "@/components/sections/Contato";
+import Hero from "@/components/secoes/Hero";
+import Produto from "@/components/secoes/Produto";
+import ComoFunciona from "@/components/secoes/ComoFunciona";
+import Utilizacao from "@/components/secoes/Utilizacao";
+import Parceiros from "@/components/secoes/Parceiros";
+import Noticias from "@/components/secoes/Noticias";
+import Contato from "@/components/secoes/Contato";
 import JsonLd from "@/components/JsonLd";
 
+/**
+ * LANDING PAGE
+ *
+ * O ritmo alterna faixas escuras e claras, para a página não ficar
+ * monocromática:
+ *
+ *   Hero          foto, dissolve no verde escuro
+ *   Produto       escura
+ *   Como funciona escura
+ *   Utilização    escura
+ *   Parceiros     CLARA  ─┐ as duas formam uma faixa clara só
+ *   Notícias      CLARA  ─┘
+ *   Contato       escura
+ *
+ * Quem somos, artigos e galeria não têm bloco de chamada aqui: chega-se a
+ * eles pelo menu. As dúvidas frequentes moraram nesta página e passaram
+ * para a de produtos.
+ *
+ * O corte entre faixas é reto. A única passagem em degradê é a da hero
+ * para a seção seguinte, feita dentro do próprio componente Hero.
+ */
 export default function Home() {
   return (
     <>
       <JsonLd />
       <Hero />
-      <Numeros />
-      <QuemSomos />
-      <Diagnostico />
-      <ProdutosHorizontal />
+      <Produto />
       <ComoFunciona />
-      <Aplicacoes />
-      <Rastreabilidade />
-      <FichaTecnica />
-      <Impacto />
+      <Utilizacao />
       <Parceiros />
-      <Equipe />
       <Noticias />
-      <Faq />
       <Contato />
     </>
   );

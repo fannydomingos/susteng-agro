@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { site, whatsappUrl } from "@/lib/site";
 
-/** Botão flutuante de WhatsApp — aparece depois de rolar um pouco. */
+/** Botão flutuante de WhatsApp, aparece depois de rolar um pouco. */
 export default function WhatsAppFab() {
   const [visivel, setVisivel] = useState(false);
 
