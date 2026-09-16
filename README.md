@@ -286,7 +286,23 @@ A separação de conteúdo é feita por régua fina e espaço, não por caixas. 
 números e especificações usam linha de 1px; a única caixa que sobrou é a do
 formulário de contato, que precisa de um contorno para se ler como formulário.
 
-### Cinco armadilhas que já custaram caro, para não repetir
+## Os ícones
+
+Ficam em `src/components/Icones.tsx`, desenhados em SVG à mão. Não há biblioteca
+de ícones no projeto: o traço acompanha a tipografia, a cor vem por
+`currentColor` de quem chama, e nenhum pacote novo entra por causa disso.
+
+Quem escolhe o ícone de cada item é o campo `icone` em `src/lib/conteudo.ts`.
+Para trocar o ícone de uma etapa ou de um benefício, mude só essa palavra. As
+chaves disponíveis estão no tipo `ChaveIcone`, no topo do arquivo de ícones. O
+`satisfies` no fim de cada lista faz o TypeScript reclamar na hora se alguém
+escrever uma chave que não existe, em vez de o ícone sumir silenciosamente na
+tela.
+
+Aparecem em três lugares: nos quatro benefícios da seção "Nossos produtos", nas
+seis etapas da rastreabilidade e nos cinco benefícios de "Como funciona".
+
+### Seis armadilhas que já custaram caro, para não repetir
 
 1. **Não declare `position` numa classe de `@layer utilities` do `globals.css`.**
    A classe do arquivo e o utilitário do Tailwind vivem na mesma camada, e quem
@@ -317,6 +333,18 @@ formulário de contato, que precisa de um contorno para se ler como formulário.
    têm `pt-20 pb-28`: sem isso o título do produto passava por baixo do
    cabeçalho fixo e a barra de progresso cobria o botão de orçamento. O padding
    reduz a área de centralização, então o conteúdo centraliza no que sobra.
+
+6. **Classe de `@layer utilities` também vence `text-` e `tracking-` do
+   Tailwind.** É a mesma raiz da armadilha 1, mas morde em outro lugar. O
+   subtexto da hero tinha `rotulo` junto com `text-[0.625rem]`, e a medição
+   mostrou 11px em todas as larguras: `.rotulo` define `font-size` e
+   `letter-spacing`, e vem depois no arquivo. Quando precisar de tamanho
+   diferente por largura, não use `.rotulo`; escreva `font-mono uppercase` mais
+   o tamanho e o espaçamento direto, como está hoje no `Hero.tsx`.
+
+   O mesmo vale para testes: o Tailwind v4 devolve cor computada em `oklab(...)`,
+   não em `rgb(...)`. Procurar `"182, 255, 137"` na cor computada nunca acerta.
+   Compare com a cor do estado apagado em vez de procurar o valor literal.
 
 ## Acessibilidade e desempenho
 

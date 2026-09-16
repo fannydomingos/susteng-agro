@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { Rotulo, Secao, Surge, Titulo } from "@/components/ui";
+import { Icone } from "@/components/Icones";
 import { comoFunciona, rastreabilidade } from "@/lib/conteudo";
 import { useMovimentoReduzido } from "@/lib/movimento";
 
@@ -57,42 +58,48 @@ export default function ComoFunciona() {
           </p>
         </div>
 
+        {/*
+          Cada etapa é um ícone dentro de um círculo. O trilho que liga as
+          etapas NÃO é uma linha única atravessando a fileira: é um trecho por
+          etapa, desenhado do círculo até a coluna seguinte. Assim a linha
+          nunca cruza o desenho por dentro, e não é preciso tapar nada com um
+          fundo sólido, que destoaria da luz da seção. O trecho já percorrido
+          acende, o que mostra o lote avançando sem precisar de um ponto
+          viajando por cima dos ícones.
+        */}
         <ol
           data-testid="esteira"
-          className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5"
+          className="relative grid gap-9 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5"
         >
-          {/* linha que liga as etapas, só no desktop */}
-          <span
-            aria-hidden="true"
-            className="absolute left-0 right-0 top-[13px] hidden h-px bg-menta/12 lg:block"
-          />
-          {!reduzir && (
-            <motion.span
-              aria-hidden="true"
-              className="absolute top-[11px] hidden h-[5px] w-[5px] rounded-full bg-destaque shadow-[0_0_14px_3px_rgba(182,255,137,0.7)] lg:block"
-              animate={{
-                left: `${(etapaViva / (rastreabilidade.etapas.length - 1)) * 100}%`,
-              }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            />
-          )}
-
           {rastreabilidade.etapas.map((e, i) => {
             const ativa = i === etapaViva;
+            const ultima = i === rastreabilidade.etapas.length - 1;
             return (
               <li key={e.nome} className="relative">
+                {!ultima && (
+                  <span
+                    aria-hidden="true"
+                    className={
+                      "absolute left-11 right-[-1.25rem] top-[18px] hidden h-px transition-colors duration-700 lg:block " +
+                      (!reduzir && i < etapaViva ? "bg-destaque/60" : "bg-menta/12")
+                    }
+                  />
+                )}
+
                 <span
-                  aria-hidden="true"
                   className={
-                    "block h-[7px] w-[7px] rounded-full transition-all duration-500 " +
+                    "relative grid h-9 w-9 place-items-center rounded-full border transition-all duration-500 " +
                     (ativa
-                      ? "bg-destaque shadow-[0_0_12px_2px_rgba(182,255,137,0.55)]"
-                      : "bg-menta/25")
+                      ? "border-destaque/60 text-destaque shadow-[0_0_16px_1px_rgba(182,255,137,0.3)]"
+                      : "border-menta/20 text-menta/45")
                   }
-                />
+                >
+                  <Icone nome={e.icone} className="h-[18px] w-[18px]" />
+                </span>
+
                 <h3
                   className={
-                    "mt-5 font-display text-base font-600 transition-colors duration-500 " +
+                    "mt-4 font-display text-base font-600 transition-colors duration-500 " +
                     (ativa ? "text-destaque" : "text-menta")
                   }
                 >
@@ -113,9 +120,11 @@ export default function ComoFunciona() {
             <li key={item.titulo}>
               <Surge delay={i * 0.05}>
                 <div className="flex gap-5 border-b border-menta/10 py-7">
-                  <span aria-hidden="true" className="rotulo shrink-0 pt-1.5 text-destaque/50">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  {/* o ícone entrou no lugar do número: diz a mesma coisa e prende mais */}
+                  <Icone
+                    nome={item.icone}
+                    className="mt-0.5 h-6 w-6 shrink-0 text-destaque/70"
+                  />
                   <div>
                     <h3 className="font-display text-lg font-600 text-menta">{item.titulo}</h3>
                     <p className="mt-2 text-[0.95rem] leading-relaxed text-menta/55">

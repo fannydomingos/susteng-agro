@@ -4,14 +4,10 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BotaoPrincipal, BotaoVidro, Rotulo, Secao } from "@/components/ui";
+import { Icone } from "@/components/Icones";
+import { beneficiosProduto, marcadoresProduto } from "@/lib/conteudo";
 import { usePodeAnimar } from "@/lib/movimento";
 import { whatsappUrl } from "@/lib/site";
-
-const marcadores = [
-  { valor: "250 t", rotulo: "resíduo reprocessado" },
-  { valor: "2 a 4", rotulo: "ciclos por lote" },
-  { valor: "3", rotulo: "unidades produtivas" },
-];
 
 /**
  * SEÇÃO DE PRODUTO
@@ -55,25 +51,53 @@ export default function Produto() {
             formatos, que se diferenciam pela granulometria e pela proporção entre fibra e pó.
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          {/*
+            Benefícios logo abaixo do texto: quem chega pela página inicial
+            precisa saber o que ganha antes de decidir abrir a linha completa.
+            Duas colunas no computador, uma no celular, sem caixa em volta. O
+            ícone é decorativo, então fica com `aria-hidden` dentro do próprio
+            SVG e quem lê por leitor de tela ouve só o título e o texto.
+          */}
+          <ul className="mt-10 grid max-w-lg gap-x-8 gap-y-6 sm:grid-cols-2">
+            {beneficiosProduto.map((b) => (
+              <li key={b.titulo} className="flex gap-3.5">
+                <Icone nome={b.icone} className="mt-0.5 h-5 w-5 shrink-0 text-destaque" />
+                <div>
+                  <h3 className="font-display text-[0.95rem] font-600 leading-snug text-menta">
+                    {b.titulo}
+                  </h3>
+                  <p className="mt-1 text-legenda leading-relaxed text-menta/50">{b.texto}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-11 flex flex-col gap-3 sm:flex-row sm:items-center">
             <BotaoPrincipal href="/produtos">Ver todos os produtos</BotaoPrincipal>
             <BotaoVidro href={whatsappUrl()} externo>
               Solicitar orçamento
             </BotaoVidro>
           </div>
 
-          {/* marcadores em linha, separados por régua em vez de caixas */}
-          <dl className="mt-14 grid max-w-lg grid-cols-3 gap-4 pt-7">
-            <div aria-hidden="true" className="regua col-span-3 -mt-7 mb-7" />
-            {marcadores.map((m) => (
+          {/*
+            Marcadores em linha, separados por régua em vez de caixas. Cada
+            número traz o que significa: empilhados no celular, porque com a
+            linha de explicação três colunas ficavam ilegíveis em 320px.
+          */}
+          <dl className="mt-14 grid max-w-lg gap-x-6 gap-y-6 pt-7 sm:grid-cols-3">
+            <div aria-hidden="true" className="regua -mt-7 mb-1 sm:col-span-3 sm:mb-7" />
+            {marcadoresProduto.map((m) => (
               <div key={m.rotulo}>
                 <dt className="sr-only">{m.rotulo}</dt>
                 <dd>
                   <span className="block font-display text-2xl font-600 text-menta sm:text-3xl">
                     {m.valor}
                   </span>
-                  <span className="mt-1 block text-legenda leading-snug text-menta/45">
+                  <span className="mt-1 block text-legenda leading-snug text-menta/60">
                     {m.rotulo}
+                  </span>
+                  <span className="mt-2 block text-legenda leading-relaxed text-menta/40">
+                    {m.detalhe}
                   </span>
                 </dd>
               </div>

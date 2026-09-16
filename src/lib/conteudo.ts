@@ -2,7 +2,13 @@
  * Todo o texto do site.
  * Base: documento de seções, ficha técnica e apresentação institucional
  * da SustentAgro. Editar aqui muda o conteúdo sem mexer nos componentes.
+ *
+ * O campo `icone` de alguns itens aponta para um desenho de
+ * `src/components/Icones.tsx`. O `satisfies` logo abaixo de cada lista faz o
+ * TypeScript acusar na hora se alguém escrever uma chave que não existe lá.
  */
+
+import type { ChaveIcone } from "@/components/Icones";
 
 export const quemSomos = {
   titulo: "Quem somos",
@@ -286,27 +292,84 @@ export const comoFunciona = {
     "A SustentAgro transforma o coco verde descartado em substratos de alta qualidade. Com tecnologia especializada, produzimos um meio de cultivo eficiente, sustentável e livre de contaminantes.",
   itens: [
     {
+      icone: "reciclar",
       titulo: "Solução sustentável",
       texto: "Reutiliza o coco verde que seria descartado, reduzindo o volume de resíduos.",
     },
     {
+      icone: "gota",
       titulo: "Retenção de umidade",
       texto: "Menor necessidade de irrigação e maior previsibilidade no manejo.",
     },
     {
+      icone: "broto",
       titulo: "Melhor desenvolvimento das plantas",
       texto: "Evita a compactação do solo e melhora a oxigenação das raízes.",
     },
     {
+      icone: "escudo",
       titulo: "Cultivo mais seguro",
       texto: "Livre de pragas e doenças, o que assegura maior qualidade da produção.",
     },
     {
+      icone: "ajustes",
       titulo: "Formulações personalizadas",
       texto: "Substratos adaptados a diferentes culturas e necessidades.",
     },
-  ],
+  ] satisfies { icone: ChaveIcone; titulo: string; texto: string }[],
 };
+
+/**
+ * BENEFÍCIOS NA SEÇÃO DE PRODUTO DA PÁGINA INICIAL
+ * Quatro linhas curtas, para quem chega pela home entender o ganho antes de
+ * clicar em "ver todos os produtos". São os mesmos benefícios de "como
+ * funciona", em frase mais curta, porque ali o espaço é menor.
+ */
+export const beneficiosProduto = [
+  {
+    icone: "gota",
+    titulo: "Retém mais umidade",
+    texto: "Reduz a frequência de irrigação e o custo de água.",
+  },
+  {
+    icone: "broto",
+    titulo: "Raiz que respira",
+    texto: "Não compacta e mantém a oxigenação ao longo do ciclo.",
+  },
+  {
+    icone: "escudo",
+    titulo: "Livre de pragas e doenças",
+    texto: "Substrato limpo, sem contaminantes do solo.",
+  },
+  {
+    icone: "reciclar",
+    titulo: "Origem no resíduo",
+    texto: "Casca de coco verde que deixaria de ter destino.",
+  },
+] satisfies { icone: ChaveIcone; titulo: string; texto: string }[];
+
+/**
+ * MARCADORES NUMÉRICOS DA SEÇÃO DE PRODUTO
+ * Cada número vem acompanhado do que ele significa na prática. Número solto
+ * não diz nada a quem não conhece a operação.
+ */
+export const marcadoresProduto = [
+  {
+    valor: "250 t",
+    rotulo: "de casca de coco reprocessada",
+    detalhe: "Volume que deixou de sobrecarregar aterros sanitários.",
+  },
+  {
+    valor: "2 a 4",
+    rotulo: "ciclos de cultivo por lote",
+    detalhe: "O mesmo substrato atravessa mais de uma safra antes da troca.",
+  },
+  {
+    valor: "3",
+    rotulo: "unidades produtivas",
+    detalhe: "Distrito Federal, Entorno e Ceará, com envio para todo o Brasil.",
+  },
+];
 
 export const rastreabilidade = {
   titulo: "Rastreabilidade do lote",
@@ -314,18 +377,36 @@ export const rastreabilidade = {
     "Todas as etapas são registradas digitalmente, com data, hora, peso e responsável técnico.",
   etapas: [
     {
+      icone: "coleta",
       nome: "Coleta",
       detalhe: "Origem, volume e responsável registrados na fazenda parceira.",
     },
-    { nome: "Transporte", detalhe: "Carga lacrada, com motorista e veículo identificados." },
-    { nome: "Recebimento", detalhe: "Peso aferido na unidade e conferência do responsável." },
-    { nome: "Triagem", detalhe: "Aproveitamento medido e perdas destinadas à compostagem." },
     {
+      icone: "transporte",
+      nome: "Transporte",
+      detalhe: "Carga lacrada, com motorista e veículo identificados.",
+    },
+    {
+      icone: "recebimento",
+      nome: "Recebimento",
+      detalhe: "Peso aferido na unidade e conferência do responsável.",
+    },
+    {
+      icone: "triagem",
+      nome: "Triagem",
+      detalhe: "Aproveitamento medido e perdas destinadas à compostagem.",
+    },
+    {
+      icone: "processamento",
       nome: "Processamento",
       detalhe: "Fibra, pó e substratos produzidos sob supervisão técnica.",
     },
-    { nome: "Expedição", detalhe: "Lote rastreado por QR Code, com relatório emitido." },
-  ],
+    {
+      icone: "expedicao",
+      nome: "Expedição",
+      detalhe: "Lote rastreado por QR Code, com relatório emitido.",
+    },
+  ] satisfies { icone: ChaveIcone; nome: string; detalhe: string }[],
 };
 
 export type NumeroDestaque = {
