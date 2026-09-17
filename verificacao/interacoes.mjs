@@ -7,6 +7,12 @@ import { chromium } from "playwright";
 import fs from "node:fs";
 
 const BASE = "http://localhost:3210";
+/*
+  Número principal do WhatsApp, o mesmo de `site.whatsapp.numero`. Fica numa
+  constante só: quando o cliente trocar o número, é esta linha que muda aqui,
+  e não quatro asserções espalhadas pelo arquivo, como já aconteceu.
+*/
+const WHATS_PRINCIPAL = "5561999654060";
 const OUT = "./verificacao/evidencias";
 fs.mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch({
@@ -426,7 +432,7 @@ const rolarAte = (page, seletor, fracao = 0.25) =>
     botoes.principalTexto === "Ver todos os produtos" &&
       botoes.principalHref === "/produtos" &&
       botoes.secundarioTexto === "Solicitar orçamento" &&
-      (botoes.secundarioHref || "").includes("wa.me/5561984068770"),
+      (botoes.secundarioHref || "").includes(`wa.me/${WHATS_PRINCIPAL}`),
     JSON.stringify(botoes),
   );
   ok(
@@ -779,6 +785,9 @@ const rolarAte = (page, seletor, fracao = 0.25) =>
   const numeros = donos.pessoas.map((p) => (p.whatsapp || "").match(/wa\.me\/(\d+)/)?.[1]);
   ok(
     "cada diretor tem o próprio número de WhatsApp no cartão",
+    /* de propósito não usa WHATS_PRINCIPAL: aqui o ponto é justamente que
+       cada diretor mantém o número pessoal dele, mesmo que o do Fabiano
+       coincida hoje com o número principal do site */
     numeros[0] === "5561984068770" && numeros[1] === "5561999654060",
     numeros.join(" · "),
   );
@@ -949,7 +958,7 @@ const rolarAte = (page, seletor, fracao = 0.25) =>
   const url = await page.evaluate(() => window.__urlAberta || "");
   ok(
     "o formulário abre o WhatsApp com nome, cidade e cultivo preenchidos",
-    url.includes("wa.me/5561984068770") &&
+    url.includes(`wa.me/${WHATS_PRINCIPAL}`) &&
       decodeURIComponent(url).includes("Maria Teste") &&
       decodeURIComponent(url).includes("Morango") &&
       decodeURIComponent(url).includes("Formosa"),
@@ -960,7 +969,7 @@ const rolarAte = (page, seletor, fracao = 0.25) =>
   const fab = page.getByTestId("whatsapp-fab");
   ok(
     "o botão flutuante de WhatsApp aponta para o número principal",
-    (await fab.getAttribute("href")).includes("5561984068770"),
+    (await fab.getAttribute("href")).includes(WHATS_PRINCIPAL),
   );
   await ctx.close();
 }

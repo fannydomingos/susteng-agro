@@ -28,11 +28,20 @@ export const site = {
 
   email: "cristyanomartins@gmail.com",
 
-  // WhatsApp principal, usado no botão flutuante e nos CTAs
+  /*
+    WhatsApp principal. TUDO que é botão, formulário e link de WhatsApp do
+    site sai daqui: cabeçalho, botão flutuante, CTAs das páginas, formulário
+    de contato e rodapé. Trocar estas duas linhas troca o site inteiro.
+
+    A lista `telefones` logo abaixo é outra coisa: são os números pessoais dos
+    dois diretores, que aparecem nomeados no rodapé, na seção de contato e na
+    página "A empresa". Mexa neles só se quiser mudar o contato direto de um
+    diretor.
+  */
   whatsapp: {
     // formato internacional, só dígitos
-    numero: "5561984068770",
-    exibicao: "(61) 98406-8770",
+    numero: "5561999654060",
+    exibicao: "(61) 99965-4060",
     mensagem:
       "Olá. Vim pelo site da SustentAgro e gostaria de receber informações sobre os substratos de fibra de coco.",
   },
