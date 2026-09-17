@@ -355,7 +355,7 @@ export const beneficiosProduto = [
  */
 export const marcadoresProduto = [
   {
-    valor: "250 t",
+    valor: "450 t",
     rotulo: "de casca de coco reprocessada",
     detalhe: "Volume que deixou de sobrecarregar aterros sanitários.",
   },
@@ -417,7 +417,7 @@ export type NumeroDestaque = {
 };
 
 export const numeros: NumeroDestaque[] = [
-  { valor: 250, sufixo: "+", legenda: "toneladas de resíduo de coco processadas" },
+  { valor: 450, sufixo: "+", legenda: "toneladas de resíduo de coco processadas" },
   { valor: 150, sufixo: "+", legenda: "famílias beneficiadas direta e indiretamente" },
   { valor: 350, sufixo: " t", legenda: "de CO₂ evitadas em gases de efeito estufa" },
   { valor: 2022, sufixo: "", legenda: "ano de início das operações", semAnimacao: true },
